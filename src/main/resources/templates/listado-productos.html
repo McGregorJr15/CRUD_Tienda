@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Productos</title></head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+    <h2>Productos</h2>
+    <p><a th:href="@{/}">Regresar</a> &nbsp;&nbsp; <a th:href="@{/productos/agregar}">Agregar Producto</a></p>
+
+    <table style="border-collapse: collapse; width: 60%; border: 1px solid #ddd; text-align: left;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 8px; border: 1px solid #ddd;">id</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Nombre</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Precio</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Categoria</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Accones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${productos}">
+                <td style="padding: 8px; border: 1px solid #ddd;" th:text="${p.id}"></td>
+                <td style="padding: 8px; border: 1px solid #ddd;" th:text="${p.nombre}"></td>
+                <td style="padding: 8px; border: 1px solid #ddd;" th:text="'$ ' + ${#numbers.formatDecimal(p.precio, 1, 'COMMA', 2, 'POINT')}"></td>
+                <td style="padding: 8px; border: 1px solid #ddd;" th:text="${p.categoria}"></td>
+                <td style="padding: 8px; border: 1px solid #ddd;">
+                    <a th:href="@{/productos/actualizar/{id}(id=${p.id})}">Actualizar</a> &nbsp;
+                    <a th:href="@{/productos/eliminar/{id}(id=${p.id})}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

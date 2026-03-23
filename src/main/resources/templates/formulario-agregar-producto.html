@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Agregar Producto</title></head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+    <h2>Productos - Agregar</h2>
+    <p><a th:href="@{/productos}">Regresar</a></p>
+
+    <form th:action="@{/productos/guardar}" th:object="${productoDto}" method="post">
+        <p>Nombre:<br><input type="text" th:field="*{nombre}" required style="padding: 5px; width: 200px;"/></p>
+        <p>Precio:<br><input type="number" th:field="*{precio}" step="any" required style="padding: 5px; width: 200px;"/></p>
+        <p>Categoria<br>
+            <select th:field="*{categoria}" style="padding: 5px; width: 214px;">
+                <option th:each="cat : ${categorias}" th:value="${cat.nombre}" th:text="${cat.nombre}"></option>
+            </select>
+        </p>
+        <button type="submit" style="padding: 5px 20px;">Guardar</button>
+    </form>
+</body>
+</html>
