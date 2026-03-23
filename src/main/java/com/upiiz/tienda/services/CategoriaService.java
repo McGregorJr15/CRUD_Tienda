@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class CategoriaService {
-    // Precargamos los datos de la imagen
+    // Precargamos los datos incluyendo la descripción de tu imagen
     private final List<Categoria> categorias = new ArrayList<>(Arrays.asList(
-            new Categoria(1L, "Bebidas"),
-            new Categoria(2L, "Deportes"),
-            new Categoria(3L, "Cultura"),
-            new Categoria(4L, "Videojuegos")
+            new Categoria(1L, "Bebidas", "Aquí se agrupan todas las bebidas"),
+            new Categoria(2L, "Deportes", "Artículos y accesorios deportivos"),
+            new Categoria(3L, "Cultura", "Libros, arte y entretenimiento cultural"),
+            new Categoria(4L, "Videojuegos", "Consolas, juegos físicos y digitales")
     ));
     private final AtomicLong counter = new AtomicLong(5);
 
@@ -27,13 +27,14 @@ public class CategoriaService {
     }
 
     public void guardar(CategoriaDto dto) {
-        categorias.add(new Categoria(counter.getAndIncrement(), dto.getNombre()));
+        categorias.add(new Categoria(counter.getAndIncrement(), dto.getNombre(), dto.getDescripcion()));
     }
 
     public void actualizar(Long id, CategoriaDto dto) {
         for (Categoria c : categorias) {
             if (c.getId().equals(id)) {
                 c.setNombre(dto.getNombre());
+                c.setDescripcion(dto.getDescripcion()); // Actualizamos descripción
                 return;
             }
         }

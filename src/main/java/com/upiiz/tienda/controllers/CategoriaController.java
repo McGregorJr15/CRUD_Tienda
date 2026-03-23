@@ -36,7 +36,8 @@ public class CategoriaController {
     public String editar(@PathVariable Long id, Model model) {
         Categoria c = categoriaService.obtenerPorId(id);
         if (c == null) return "redirect:/categorias";
-        model.addAttribute("categoriaDto", new CategoriaDto(c.getNombre()));
+        // Pasamos también la descripción al DTO
+        model.addAttribute("categoriaDto", new CategoriaDto(c.getNombre(), c.getDescripcion()));
         model.addAttribute("id", id);
         return "formulario-actualizar-categoria";
     }

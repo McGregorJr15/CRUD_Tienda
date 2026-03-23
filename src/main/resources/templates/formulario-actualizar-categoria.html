@@ -5,7 +5,12 @@
     <h2>Categorias - Actualizar</h2>
     <p><a th:href="@{/categorias}">Regresar</a></p>
     <form th:action="@{/categorias/actualizar/{id}(id=${id})}" th:object="${categoriaDto}" method="post">
-        <p>Nombre:<br><input type="text" th:field="*{nombre}" required style="padding: 5px; width: 200px;"/></p>
+        <p>Nombre:<br><input type="text" th:field="*{nombre}" required style="padding: 5px; width: 250px;"/></p>
+        
+        <p>Descripcion:<br>
+            <textarea th:field="*{descripcion}" rows="4" style="padding: 5px; width: 400px; resize: none;"></textarea>
+        </p>
+
         <button type="submit" style="padding: 5px 20px;">Actualizar</button>
     </form>
 </body>

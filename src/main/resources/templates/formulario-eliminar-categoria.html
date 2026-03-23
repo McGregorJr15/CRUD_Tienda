@@ -5,8 +5,16 @@
     <h2>Categorias - Eliminar</h2>
     <p><a th:href="@{/categorias}">Regresar</a></p>
     <form th:action="@{/categorias/eliminar/{id}(id=${categoria.id})}" method="post">
-        <p>Nombre:<br><input type="text" th:value="${categoria.nombre}" readonly style="padding: 5px; width: 200px; background-color: #f9f9f9;"/></p>
-        <button type="submit" style="padding: 5px 20px;">Eliminar</button>
+        
+        <p>Nombre:<br>
+            <input type="text" th:value="${categoria.nombre}" readonly style="padding: 5px; width: 250px; background-color: #f9f9f9; border: 1px solid #767676;"/>
+        </p>
+        
+        <p>Descripcion:<br>
+            <textarea th:text="${categoria.descripcion}" readonly rows="4" style="padding: 5px; width: 400px; background-color: #f9f9f9; resize: none; border: 1px solid #767676;"></textarea>
+        </p>
+
+        <button type="submit" style="padding: 5px 20px; background-color: #efefef; border: 1px solid #767676;">Eliminar</button>
     </form>
 </body>
 </html>
