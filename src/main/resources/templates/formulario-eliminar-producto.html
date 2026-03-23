@@ -6,14 +6,25 @@
     <p><a th:href="@{/productos}">Regresar</a></p>
 
     <form th:action="@{/productos/eliminar/{id}(id=${producto.id})}" method="post">
-        <p>Nombre:<br><input type="text" th:value="${producto.nombre}" readonly style="padding: 5px; width: 200px; background-color: #f9f9f9;"/></p>
-        <p>Precio:<br><input type="number" th:value="${producto.precio}" readonly style="padding: 5px; width: 200px; background-color: #f9f9f9;"/></p>
+        <p>Nombre:<br>
+           <input type="text" th:value="${producto.nombre}" readonly style="padding: 5px; width: 250px; background-color: #f9f9f9; border: 1px solid #767676;"/>
+        </p>
+        
+        <p>Precio:<br>
+            <input type="number" th:value="${producto.precio}" readonly style="padding: 5px; width: 250px; background-color: #f9f9f9; border: 1px solid #767676;"/>
+        </p>
+        
         <p>Categoria<br>
-            <select disabled style="padding: 5px; width: 214px; background-color: #f9f9f9;">
+            <select disabled style="padding: 5px; width: 264px; background-color: #f9f9f9; border: 1px solid #767676;">
                 <option th:text="${producto.categoria}"></option>
             </select>
         </p>
-        <button type="submit" style="padding: 5px 20px;">Eliminar</button>
+
+        <p style="color: #d9534f; font-weight: bold; font-size: 0.9em; max-width: 400px;">
+            ⚠️ Advertencia: Al hacer clic en "Eliminar", este registro se borrará de forma permanente. Esta acción no se puede deshacer.
+        </p>
+
+        <button type="submit" style="padding: 5px 20px; background-color: #efefef; border: 1px solid #767676; cursor: pointer;">Eliminar</button>
     </form>
 </body>
 </html>
